@@ -1,0 +1,219 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.header {
+  background: #163a5f;
+  color: white;
+  padding: 24px 20px;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mvc-badge {
+  background: white;
+  color: #163a5f;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.stat-card,
+.panel,
+.student-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card span,
+.muted {
+  color: #6b7280;
+}
+
+.stat-card h2 {
+  color: #163a5f;
+  font-size: 28px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 22px;
+}
+
+.form-group {
+  margin: 15px 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #163a5f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mvc-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+}
+
+.rule-card {
+  display: flex;
+  justify-content: left;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #163a5f;
+  border-radius: 7px;
+}
+
+.records-section {
+  margin-top: 28px;
+}
+
+.user-records {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.student-card h3 {
+  color: #163a5f;
+  margin-bottom: 8px;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: white;
+  border: 1px dashed #cbd5e1;
+  padding: 35px;
+  color: #6b7280;
+}
+
+.message {
+  min-height: 24px;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #b02a37;
+}
+
+/* Layout for the 3-part assessment panel */
+.assessment-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.assessment-column {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.assessment-column h4 {
+    margin-top: 0;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    color: #333;
+}
+
+.read-only-box {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    min-height: 120px;
+}
+
+
+@media (max-width: 800px) {
+  .main-grid,
+  .student-records {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

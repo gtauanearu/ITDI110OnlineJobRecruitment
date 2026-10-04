@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Job Application and Recruitment System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div>
+        <h1>Online Job Application and Recrutment Prototype</h1>
+        <p>NUV - ITDI 110 - Semester 2 2026</p>
+        <p>Designed By Mr. Kenny & Mr. Georges Tauanearu</p>
+      </div>
+      <span class="mvc-badge">Checkpoint 2</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="dashboard">
+      <div class="stat-card">
+        <span>Applicants</span>
+        <h2 id="totalApplicants">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Applications</span>
+        <h2 id="totalApplications">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Interviews</span>
+        <h2 id="totalInterviews">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Interviewers</span>
+        <h2 id="totalInterviewers">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Job Vacancies</span>
+        <h2 id="totalJobVacancies">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Recruiters</span>
+        <h2 id="totalRecruiters">0</h2>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      <div class="panel">
+
+        <h2 id="formTitle">Register User</h2>
+        <p class="muted">Enter the user information below.</p>
+         <div class="form-group">
+            <label for="typeOfUser">Type of User</label>
+            
+          </div>
+        <form id="userForm">
+          <select id="typeOfUser" required>
+              <option value="">Select Type</option>
+              <option value ="Applicant">Applicant</option>
+              <option value ="Recruiter">Recruiter</option>
+              <option value ="Interviewer">Interviewer</option>
+            </select>
+          <div class="form-group">
+            <label id="userIdlabel">User ID</label>
+            <input id="userId" type="text" placeholder="e.g. ST001" required>
+          </div>
+
+          <div class="form-group">
+            <label for="userName">Full Name</label>
+            <input id="userName" type="text" placeholder="e.g. Mary Tari" required>
+          </div>
+
+          <div class="form-group">
+            <label for="userEmail">Email</label>
+            <input id="userEmail" type="email" placeholder="e.g. mary@email.com" required>
+          </div>
+    <!--
+          <div class="form-group">
+            <label for="gpa">GPA</label>
+            <input id="gpa" type="number" min="0" max="4" step="0.01"
+                   placeholder="e.g. 3.40" required>
+          </div>
+        -->
+          <button id="registerButton" class="primary-button" type="submit">Register User</button>
+        </form>
+
+        <p id="message" class="message"></p>
+      </div>
+
+      <div class="panel">
+        <h2>MVC Records at this stage</h2>
+        <div class="mvc-card"><strong>MODEL Inheritance</strong><span> </span></div>
+        <div class="mvc-card"><strong></strong><span>1 Parent Model + 3 Child Models</span></div>
+        <div class="mvc-card"><strong>TOTAL MODELS & METHODS</strong><span></span></div>
+        <div class="mvc-card"><strong></strong><span>7 Models + 27 Methods</span></div>     
+        <div class="mvc-card"><strong>VIEW</strong><span></span></div>
+        <div class="mvc-card"><strong>TOTAL VIEWS</strong><span></span></div>
+              <div class="mvc-card"><strong></strong><span>1 userView +25 Methods</span></div>
+        <div class="mvc-card"><strong>CONTROLLER</strong><span></span></div>
+        <div class="mvc-card"><strong>TOTAL CONTROLLERS</strong><span></span></div>
+        <div class="mvc-card"><strong></strong><span>1 userController + 13 EventControllers </span></div>
+      </div>
+
+    </section>
+
+    <section class="records-section">
+      <h2>Registered Applicants_________________________________________________________</h2>
+      <div id="applicantRecords" class="user-records">
+        <div id="emptyApplicantMessage" class="empty-message">
+          No applicant registered yet.
+        </div>
+      </div>
+      <h2>Registered Recruiters_________________________________________________________</h2>
+      <div id="recruiterRecords" class="user-records">
+        <div id="emptyRecruiterMessage" class="empty-message">
+          No recruiter registered yet.
+        </div>
+      </div>
+      <h2>Published Job Vacancies</h2>
+
+      <div id="jobVacancyRecords">
+
+      <div
+        id="emptyJobVacancyMessage"
+        class="empty-message">
+
+        No vacancy published yet.
+
+    </div>
+    </div>
+
+<h2>Registered Applications_________________________________________________________</h2>
+
+<div id="applicationRecords">
+
+    <div
+        id="emptyApplicationMessage"
+        class="empty-message">
+
+        No applications submitted yet.
+
+    </div>
+
+</div>
+
+
+  </div>
+
+<!-- NEW SECTION: Registered Applications Assessed -->
+
+    <h2>Registered Applications Assessed_________________________________________________</h2>
+    <hr>
+    <div id="assessedApplicationRecords">
+        <p id="emptyAssessedApplicationMessage" class="empty-message">No assessed application yet.</p>
+    </div>
+
+    <h2>Registered Applications Shortlisted for Interview____________________________________</h2>
+    <hr>
+    <div id="assessedApplicationRecords">
+        <p id="emptyAssessedApplicationMessage" class="empty-message">No application shortlisted yet.</p>
+    </div>
+
+      <h2>Registered Interviewers_________________________________________________________</h2>
+      <div id="interviewerRecords" class="user-records">
+        <div id="emptyInterviewerMessage" class="empty-message">
+          No interviewer registered yet.
+        </div>
+      </div>
+
+      <h2>Successfull Applicants_________________________________________________________</h2>
+      <div id="interviewerRecords" class="user-records">
+        <div id="emptyInterviewerMessage" class="empty-message">
+          No successfull applicant registered yet.
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="model.js"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
