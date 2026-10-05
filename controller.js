@@ -131,53 +131,58 @@ handleSaveAssessment(recruiterId) {
         this.view.showUserStatusMessage("Failed to update application status.", true);
     }
 
-
+}
     // Inside UserController.js
+        // 1. Get form data from View
+    handlePublishVacancy(recruiterId) {
 
-handlePublishVacancy(recruiterId) {
-    // 1. Get the form data from the View
-    const vacancyData = this.view.getVacancyFormData(recruiterId);
+        const vacancyData = this.view.getVacancyFormData(recruiterId);
 
-    // Basic Validation: Ensure required fields are provided
-    if (!vacancyData.vacancyId || !vacancyData.positionTitle) {
-        this.view.showUserStatusMessage("Please fill in both Vacancy ID and Position Title.", true);
+        // Validation
+        if (!vacancyData.vacancyId || !vacancyData.positionTitle) {
+            this.view.showUserStatusMessage("Please fill in both Vacancy ID and Position Title.", true);
         return;
-    }
-
-    // 2. Pass data to the Model (or create/store the vacancy)
-    // Make sure to attach the recruiterId so we know who created it!
-    const newVacancy = {
-        vacancyId: vacancyData.vacancyId,
-        positionTitle: vacancyData.positionTitle,
-        department: vacancyData.department,
-        description: vacancyData.description,
-        openingDate: vacancyData.openingDate,
-        closingDate: vacancyData.closingDate,
-        recruiterId: recruiterId 
-    };
-
-    const isAdded = this.model.addJobVacancy(newVacancy);
-
-    // 3. Update the UI and feedback
-    if (isAdded) {
-        this.view.showUserStatusMessage(`Job Vacancy '${newVacancy.positionTitle}' published successfully!`);
-        
-        // Render the new vacancy card if you have a method for it
-        if (typeof this.view.displayJobVacancyCard === 'function') {
-            this.view.displayJobVacancyCard(newVacancy);
-        } else if (typeof this.view.displayJobVacancy === 'function') {
-            this.view.displayJobVacancy(newVacancy);
         }
 
-        // Hide and clear the form
-        this.view.hideVacancyForm(recruiterId);
-    } else {
-        this.view.showUserStatusMessage("Failed to publish job vacancy. Vacancy ID might already exist.", true);
+        // Retrieve Recruiter to get full name
+        const recruiter = this.model.getUserById ? this.model.getUserById(recruiterId) : null;
+        const recruiterName = recruiter ? recruiter.fullName : '';
+
+        // 2. Instantiate JobVacancy Model Class using correct constructor arguments
+        const newVacancy = new JobVacancy(
+                vacancyData.vacancyId,
+                recruiterId,
+                recruiterName,
+                vacancyData.positionTitle,
+                vacancyData.department,
+                vacancyData.description,
+                vacancyData.openingDate,
+                vacancyData.closingDate
+        );
+
+        // 3. Add to Model
+        const isAdded = this.model.addJobVacancy(newVacancy);
+
+        // 4. Update UI
+        if (isAdded) {
+            this.view.showUserStatusMessage(`Job Vacancy '${newVacancy.positionTitle}' published successfully!`);
+        
+            if (typeof this.view.displayJobVacancyCard === 'function') {
+                this.view.displayJobVacancyCard(newVacancy);
+                } 
+            else if (typeof this.view.displayJobVacancy === 'function') {
+                this.view.displayJobVacancy(newVacancy);
+                }
+
+            this.view.hideVacancyForm(recruiterId);
+            } 
+        else {
+                this.view.showUserStatusMessage("Failed to publish job vacancy. Vacancy ID might already exist.", true);
+                }
     }
-}
 
 
-}
+
 
 
     // ************************************************************//
